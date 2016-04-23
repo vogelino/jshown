@@ -1,0 +1,19 @@
+{
+  "name": "jshown",
+  "version": "1.0.0",
+  "description": "A react component to vizualize json structures",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vogelino/jshown.git"
+  },
+  "author": "vogelino",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/vogelino/jshown/issues"
+  },
+  "homepage": "https://github.com/vogelino/jshown"
+}
