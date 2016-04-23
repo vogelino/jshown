@@ -1,5 +1,10 @@
+/* global document */
+/* global window */
+
 import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 window.addEventListener('load', () => {
-    new App().render();    
+    ReactDOM.render(<App/>, document.getElementById('app'));
 });
