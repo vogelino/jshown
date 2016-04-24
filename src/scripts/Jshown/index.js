@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
+import Group from './Group.js';
 
 export default class Jshown extends Component {
 	constructor(props) {
@@ -8,15 +9,18 @@ export default class Jshown extends Component {
 		this.formatJson = this.formatJson.bind(this);
 		this.renderJson = this.renderJson.bind(this);
 		this.getFormattedValue = this.getFormattedValue.bind(this);
+
+		this.state = {
+			json: this.formatJson(props.json)
+		};
 	}
 
 
 	render() {
-		const { json } = this.props;
-		const formattedJson = this.formatJson(json);
+		const { json } = this.state;
 		return (
 			<div>
-				{this.renderJson(formattedJson)}
+				{this.renderJson(json)}
 			</div>
 		);
 	}
@@ -28,13 +32,14 @@ export default class Jshown extends Component {
 	}
 
 
-	getFormattedValue(key, value) {
+	getFormattedValue(key, value, depth = 0) {
 		const formattedValue = {
 			name: key,
 			hasChildren: false,
 			childrenSize: 0,
 			isOpen: true,
-			value
+			depth: !_.isUndefined(depth) && _.isNumber(depth) &&
+				!_.isNaN(depth) ? depth + 1 : 0
 		};
 
 		if (_.isObject(value)) {
@@ -42,16 +47,14 @@ export default class Jshown extends Component {
 			formattedValue.hasChildren = true;
 			formattedValue.childrenSize = Object.keys(value).length;
 			formattedValue.value = Object.keys(value).map((valueKey) =>
-				this.getFormattedValue(valueKey, value[valueKey]));
-			formattedValue.isOpen = false;
+				this.getFormattedValue(valueKey, value[valueKey], formattedValue.depth));
 		}
 		if (_.isArray(value)) {
 			formattedValue.type = 'array';
 			formattedValue.hasChildren = true;
 			formattedValue.childrenSize = value.length;
 			formattedValue.value = Object.keys(value).map((valueKey) =>
-				this.getFormattedValue(valueKey, value[valueKey]));
-			formattedValue.isOpen = false;
+				this.getFormattedValue(valueKey, value[valueKey], formattedValue.depth));
 		}
 		if (_.isString(value)) {
 			formattedValue.type = 'string';
@@ -69,33 +72,13 @@ export default class Jshown extends Component {
 
 	renderJson(json) {
 		return json.map((originalValue, index) => {
-			const {
-				name,
-				type,
-				hasChildren,
-				childrenSize,
-				isOpen
-			} = originalValue;
-
-			const classes = [
-				'json-group',
-				isOpen ? 'open' : 'closed',
-				type,
-				`childrens-${childrenSize}`,
-				hasChildren ? 'with-children' : 'without-children'
-			].join(' ');
-
+			const groupProps = Object.assign({}, { index }, originalValue);
 			return (
-				<div key={index} className={classes}>
-					<label className="key-label">
-						{name} ({type}{childrenSize ? ' ' + childrenSize : ''}):
-					</label>
-					<div className="value-container">
-						{this.renderValue(originalValue)}
-					</div>
-				</div>
+				<Group key={index} {...groupProps}>
+					{this.renderValue(originalValue)}
+				</Group>
 			);
-		});
+		}, this);
 	}
 
 

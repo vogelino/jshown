@@ -4,7 +4,7 @@
   "description": "",
   "author": "Lucas Vogel <contact@vogelino.com>",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "main": "app.js",
   "repository": {

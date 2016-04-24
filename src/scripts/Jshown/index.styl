@@ -1,6 +1,29 @@
-@import 'nib'
-
 .json-group
-	width $width
+	width 100%
+	float left
 	box-sizing border-box
 
+	> .key-label
+		width auto
+		float left
+		box-sizing border-box
+		position relative
+		padding-left 20px
+
+	> .key-label:before
+		content '>'
+		position absolute
+		top 0
+		left 0
+
+	&.open > .key-label:before
+		content 'v'
+
+	> .value-container
+		display none
+
+		> .json-group
+			padding-left 20px
+
+	&.open > .value-container
+		display block
