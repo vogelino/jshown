@@ -1,5 +1,7 @@
 .json-group
-	font-family Consolas, 'Liberation Mono', Menlo, Courier, monospace
+	font-family $jshownFontFamily
+	font-size $jshownFontSize
+	line-height $jshownFontSize
 	width 100%
 	float left
 	box-sizing border-box
@@ -12,14 +14,14 @@
 		padding-left 15px
 		margin-right 5px
 		margin-bottom 2px
-		color darkviolet
+		color $jshownColorsKey
 
 		.metadata
-			font-size 12px
-			color darkgrey
+			font-size $jshownInfoFontSize
+			color $jshownInfoColor
 			padding 3px 4px 2px
 			border-radius 3px
-			background-color whitesmoke
+			background $jshownInfoBackground
 
 		.metadata,
 		.metadata .type,
@@ -31,28 +33,28 @@
 			margin-right 5px
 
 	> .key-label:before
-		font-family Arial, sans-serif
-		font-size 10px
+		font-family $jshownKeySymbolFontFamily
+		font-size $jshownKeySymbolFontSize
 		color darkgrey
-		content '►'
+		content $jshownKeyClosedSymbol
 		position absolute
 		top 3px
 		left 0
 
 	&.open > .key-label:before
-		content '▼'
+		content $jshownKeyOpenSymbol
 
 	&.array > .key-label .metadata .size
 		&:before
 			content '['
 		&:after
-			content ']'
+			content ' items]'
 
 	&.object > .key-label .metadata .size
 		&:before
 			content '{'
 		&:after
-			content '}'
+			content ' keys}'
 
 	&.with-children > .value-container
 		display none
@@ -68,10 +70,11 @@
 	&.without-children > .key-label:before
 		content ''
 
+	&.number > .value-container > .single-value
+		color $jshownColorsInteger
+
 	&.string > .value-container > .single-value
-		display inline-block
-		margin-top 2px
-		color tomato
+		color $jshownColorsString
 
 		&:before,
 		&:after

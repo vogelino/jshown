@@ -1,208 +1,43 @@
-const exampleLaundry = {
-	description: 'A list of laundry care instructions',
-	laundryCareInstructions: [
+/* eslint-disable max-len */
+
+export default {
+	ResultSet: {
+		totalResultsAvailable: '1827221',
+		totalResultsReturned: 2,
+		firstResultPosition: 1,
+		Result: [
 			{
-			category: 'Washing',
-			instruction: 'Machine Wash, Normal'
-		},
-		{
-			category: 'Washing',
-			instruction: 'Machine Wash, Cold'
-		},
-		{
-			category: 'Washing',
-			instruction: 'Machine Wash, Warm'
-		},
-		{
-			category: 'Washing',
-			instruction: 'Machine Wash, Hot'
-		},
-		{
-			category: 'Washing',
-			instruction: 'Machine Wash, Permanent Press'
-		},
-		{
-			category: 'Washing',
-			instruction: 'Machine Wash, Gentle or Delicate'
-		},
-		{
-			category: 'Washing',
-			instruction: 'Hand Wash'
-		},
-		{
-			category: 'Washing',
-			instruction: 'Do Not Wash'
-		},
-		{
-			category: 'Bleaching',
-			instruction: 'Bleach When Needed'
-		},
-		{
-			category: 'Bleaching',
-			instruction: 'Non-Chlorine Bleach When Needed'
-		},
-		{
-			category: 'Bleaching',
-			instruction: 'Do Not Bleach'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Tumble Dry, Normal'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Tumble Dry, Normal, Low Heat'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Tumble Dry, Normal, Medium Heat'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Tumble Dry, Normal, High Heat'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Tumble Dry, Normal, No Heat'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Tumble Dry, Permanent Press'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Tumble Dry, Gentle'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Do Not Tumble Dry'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Do Not Dry'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Line Dry'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Drip Dry'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Dry Flat'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Dry In Shade'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Line Dry In Shade'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Dry Flat In Shade'
-		},
-		{
-			category: 'Drying',
-			instruction: 'Drip Dry In Shade'
-		},
-		{
-			category: 'Wringing',
-			instruction: 'Do Not Wring'
-		},
-		{
-			category: 'Ironing',
-			instruction: 'Iron At Low Temperature'
-		},
-		{
-			category: 'Ironing',
-			instruction: 'Iron At Medium Temperature'
-		},
-		{
-			category: 'Ironing',
-			instruction: 'Iron'
-		},
-		{
-			category: 'Ironing',
-			instruction: 'Iron At High Temperature'
-		},
-		{
-			category: 'Ironing',
-			instruction: 'Do Not Iron'
-		},
-		{
-			category: 'Ironing',
-			instruction: 'Do Not Steam'
-		},
-		{
-			category: 'Drycleaning',
-			instruction: 'Dryclean'
-		},
-		{
-			category: 'Drycleaning',
-			instruction: 'Do Not Dryclean'
-		}
-	]
-};
-
-const exampleGulpfile = {
-	builds: [
-		{
-			format: 'pdf',
-			files: [
-				'content/print-introduction.md',
-				'content/chapter-1.md',
-				'content/chapter-2.md'
-			],
-			build: [
-				{
-					format: 'pdf',
-					files: [
-						'content/print-introduction.md',
-						'content/chapter-1.md',
-						'content/chapter-2.md'
-					],
-					build: [
-						{
-							format: 'pdf',
-							files: [
-								'content/print-introduction.md',
-								'content/chapter-1.md',
-								'content/chapter-2.md'
-							]
-						},
-						{
-							format: 'html',
-							files: [
-								'content/web-introduction.md',
-								'content/chapter-1.md',
-								'content/chapter-2.md'
-							]
-						}
-					]
-				},
-				{
-					format: 'html',
-					files: [
-						'content/web-introduction.md',
-						'content/chapter-1.md',
-						'content/chapter-2.md'
-					]
+				Title: 'potato jpg',
+				Summary: 'Kentang Si bungsu dari keluarga Solanum tuberosum L ini ternyata memiliki khasiat untuk mengurangi kerutan  jerawat  bintik hitam dan kemerahan pada kulit  Gunakan seminggu sekali sebagai',
+				Url: 'http://www.mediaindonesia.com/spaw/uploads/images/potato.jpg',
+				ClickUrl: 'http://www.mediaindonesia.com/spaw/uploads/images/potato.jpg',
+				RefererUrl: 'http://www.mediaindonesia.com/mediaperempuan/index.php?ar_id=Nzkw',
+				FileSize: 22630,
+				FileFormat: 'jpeg',
+				Height: '362',
+				Width: '532',
+				Thumbnail: {
+					Url: 'http://thm-a01.yimg.com/nimage/557094559c18f16a',
+					Height: '98',
+					Width: '145'
 				}
-			]
-		},
-		{
-			format: 'html',
-			files: [
-				'content/web-introduction.md',
-				'content/chapter-1.md',
-				'content/chapter-2.md'
-			]
-		}
-	]
+			},
+			{
+				Title: 'potato jpg',
+				Summary: 'Introduction of puneri aloo This is a traditional potato preparation flavoured with curry leaves and peanuts and can be eaten on fasting day  Preparation time   10 min',
+				Url: 'http://www.infovisual.info/01/photo/potato.jpg',
+				ClickUrl: 'http://www.infovisual.info/01/photo/potato.jpg',
+				RefererUrl: 'http://sundayfood.com/puneri-aloo-indian-%20recipe',
+				FileSize: 119398,
+				FileFormat: 'jpeg',
+				Height: '685',
+				Width: '1024',
+				Thumbnail: {
+					Url: 'http://thm-a01.yimg.com/nimage/7fa23212efe84b64',
+					Height: '107',
+					Width: '160'
+				}
+			}
+		]
+	}
 };
-
-export default exampleGulpfile;
