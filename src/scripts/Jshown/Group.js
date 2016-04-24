@@ -23,7 +23,7 @@ export default class Group extends Component {
 		const classes = [
 			'json-group',
 			isOpen ? 'open' : 'closed',
-			type,
+			type.toLowerCase(),
 			`childrens-${childrenSize}`,
 			hasChildren ? 'with-children' : 'without-children'
 		].join(' ');
@@ -61,9 +61,6 @@ export default class Group extends Component {
 		return (
 			<label className="key-label">
 				{name}:
-				<div className="metadata">
-					<span className="type">{type}</span>
-				</div>
 			</label>
 		);
 	}

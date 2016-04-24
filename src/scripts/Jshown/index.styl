@@ -17,18 +17,15 @@
 		.metadata
 			font-size 12px
 			color darkgrey
+			padding 3px 4px 2px
+			border-radius 3px
+			background-color whitesmoke
 
 		.metadata,
 		.metadata .type,
 		.metadata .size
 			display inline-block
-
-		.metadata .type,
-		.metadata .size
 			margin-left 5px
-			padding 3px 4px 2px
-			border-radius 3px
-			background-color whitesmoke
 
 		.metadata > span:last-child
 			margin-right 5px
@@ -39,6 +36,18 @@
 		position absolute
 		top 0
 		left 0
+
+	&.array > .key-label .metadata .size
+		&:before
+			content '['
+		&:after
+			content ']'
+
+	&.object > .key-label .metadata .size
+		&:before
+			content '{'
+		&:after
+			content '}'
 
 	&.open > .key-label:before
 		content 'v'
@@ -60,6 +69,7 @@
 	&.string > .value-container > .single-value
 		display inline-block
 		margin-top 2px
+		color tomato
 
 		&:before,
 		&:after
