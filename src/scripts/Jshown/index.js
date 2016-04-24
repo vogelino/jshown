@@ -44,15 +44,14 @@ export default class Jshown extends Component {
 
 		if (_.isObject(value)) {
 			formattedValue.type = 'Object';
-			formattedValue.hasChildren = true;
 			formattedValue.childrenSize = Object.keys(value).length;
-			formattedValue.value = Object.keys(value).map((valueKey) =>
-				this.getFormattedValue(valueKey, value[valueKey], formattedValue.depth));
 		}
 		if (_.isArray(value)) {
 			formattedValue.type = 'Array';
-			formattedValue.hasChildren = true;
 			formattedValue.childrenSize = value.length;
+		}
+		if (_.isObject(value) || _.isArray(value)) {
+			formattedValue.hasChildren = true;
 			formattedValue.value = Object.keys(value).map((valueKey) =>
 				this.getFormattedValue(valueKey, value[valueKey], formattedValue.depth));
 		}

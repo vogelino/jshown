@@ -1,4 +1,4 @@
-export default {
+const exampleLaundry = {
 	description: 'A list of laundry care instructions',
 	laundryCareInstructions: [
 			{
@@ -147,3 +147,62 @@ export default {
 		}
 	]
 };
+
+const exampleGulpfile = {
+	builds: [
+		{
+			format: 'pdf',
+			files: [
+				'content/print-introduction.md',
+				'content/chapter-1.md',
+				'content/chapter-2.md'
+			],
+			build: [
+				{
+					format: 'pdf',
+					files: [
+						'content/print-introduction.md',
+						'content/chapter-1.md',
+						'content/chapter-2.md'
+					],
+					build: [
+						{
+							format: 'pdf',
+							files: [
+								'content/print-introduction.md',
+								'content/chapter-1.md',
+								'content/chapter-2.md'
+							]
+						},
+						{
+							format: 'html',
+							files: [
+								'content/web-introduction.md',
+								'content/chapter-1.md',
+								'content/chapter-2.md'
+							]
+						}
+					]
+				},
+				{
+					format: 'html',
+					files: [
+						'content/web-introduction.md',
+						'content/chapter-1.md',
+						'content/chapter-2.md'
+					]
+				}
+			]
+		},
+		{
+			format: 'html',
+			files: [
+				'content/web-introduction.md',
+				'content/chapter-1.md',
+				'content/chapter-2.md'
+			]
+		}
+	]
+};
+
+export default exampleGulpfile;

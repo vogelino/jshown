@@ -3,7 +3,6 @@
 	width 100%
 	float left
 	box-sizing border-box
-	margin-bottom 2px
 
 	> .key-label
 		width auto
@@ -12,6 +11,7 @@
 		position relative
 		padding-left 15px
 		margin-right 5px
+		margin-bottom 2px
 		color darkviolet
 
 		.metadata
@@ -31,11 +31,16 @@
 			margin-right 5px
 
 	> .key-label:before
+		font-family Arial, sans-serif
+		font-size 10px
 		color darkgrey
-		content '>'
+		content '►'
 		position absolute
-		top 0
+		top 3px
 		left 0
+
+	&.open > .key-label:before
+		content '▼'
 
 	&.array > .key-label .metadata .size
 		&:before
@@ -48,9 +53,6 @@
 			content '{'
 		&:after
 			content '}'
-
-	&.open > .key-label:before
-		content 'v'
 
 	&.with-children > .value-container
 		display none
