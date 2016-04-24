@@ -5,6 +5,8 @@ export default class Group extends Component {
 		super(props);
 
 		this.toggleGroupOpen = this.toggleGroupOpen.bind(this);
+		this.getLabel = this.getLabel.bind(this);
+
 		this.state = {
 			isOpen: false
 		};
@@ -12,7 +14,7 @@ export default class Group extends Component {
 
 	render() {
 		const {
-			index, name, type, hasChildren,
+			index, type, hasChildren,
 			childrenSize, depth,
 			children
 		} = this.props;
@@ -28,13 +30,41 @@ export default class Group extends Component {
 
 		return (
 			<div key={index} id={`${depth}-${index}`} className={classes}>
-				<label className="key-label" onClick={this.toggleGroupOpen}>
-					{name} ({type}{childrenSize ? ' ' + childrenSize : ''}):
-				</label>
+				{this.getLabel()}
 				<div className="value-container">
 					{children}
 				</div>
 			</div>
+		);
+	}
+
+	getLabel() {
+		const {
+			hasChildren,
+			name,
+			type,
+			childrenSize
+		} = this.props;
+
+		if (hasChildren) {
+			return (
+				<label className="key-label" onClick={this.toggleGroupOpen}>
+					{name}:
+					<div className="metadata">
+						<span className="type">{type}</span>
+						<span className="size">{childrenSize}</span>
+					</div>
+				</label>
+			);
+		}
+
+		return (
+			<label className="key-label">
+				{name}:
+				<div className="metadata">
+					<span className="type">{type}</span>
+				</div>
+			</label>
 		);
 	}
 

@@ -37,7 +37,7 @@ export default class Jshown extends Component {
 			name: key,
 			hasChildren: false,
 			childrenSize: 0,
-			isOpen: true,
+			value: value,
 			depth: !_.isUndefined(depth) && _.isNumber(depth) &&
 				!_.isNaN(depth) ? depth + 1 : 0
 		};
@@ -92,6 +92,6 @@ export default class Jshown extends Component {
 			return this.renderJson(value);
 		}
 
-		return <span>{value}</span>;
+		return <span className="single-value">{value}</span>;
 	}
 }
