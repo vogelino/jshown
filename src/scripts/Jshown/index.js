@@ -50,19 +50,53 @@ export default class Jshown extends Component {
 			formattedValue.type = 'Array';
 			formattedValue.childrenSize = value.length;
 		}
-		if (_.isObject(value) || _.isArray(value)) {
-			formattedValue.hasChildren = true;
-			formattedValue.value = Object.keys(value).map((valueKey) =>
-				this.getFormattedValue(valueKey, value[valueKey], formattedValue.depth));
-		}
 		if (_.isString(value)) {
 			formattedValue.type = 'String';
 		}
 		if (_.isFunction(value)) {
 			formattedValue.type = 'Function';
+			formattedValue.value = formattedValue.value.toString();
 		}
 		if (_.isNumber(value)) {
 			formattedValue.type = 'Number';
+		}
+		if (_.isUndefined(value)) {
+			formattedValue.type = 'Undefined';
+		}
+		if (_.isNaN(value)) {
+			formattedValue.type = 'NaN';
+		}
+		if (_.isBoolean(value)) {
+			formattedValue.type = 'Boolean';
+		}
+		if (_.isDate(value)) {
+			formattedValue.type = 'Date';
+			formattedValue.value = formattedValue.value.toISOString();
+		}
+		if (_.isRegExp(value)) {
+			formattedValue.type = 'Regex';
+		}
+		if (_.isError(value)) {
+			formattedValue.type = 'Error';
+			formattedValue.value = formattedValue.value.toString();
+		}
+		if (_.isNull(value)) {
+			formattedValue.type = 'Null';
+		}
+		if (value === Infinity || value === -Infinity) {
+			formattedValue.type = 'Infinity';
+		}
+
+		if ((_.isObject(value) || _.isArray(value)) &&
+			!_.isFunction(value) && !_.isRegExp(value) &&
+			!_.isDate(value) && !_.isError(value)) {
+			formattedValue.hasChildren = true;
+			formattedValue.value = Object.keys(value).map((valueKey) =>
+				this.getFormattedValue(
+					valueKey, value[valueKey], formattedValue.depth));
+		}
+		else {
+			formattedValue.value += '';
 		}
 
 		return formattedValue;

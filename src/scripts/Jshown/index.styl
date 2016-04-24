@@ -71,7 +71,35 @@
 		content ''
 
 	&.number > .value-container > .single-value
-		color $jshownColorsInteger
+		color $jshownColorsNumber
+
+	&.infinity > .value-container > .single-value
+		color $jshownColorsInfinity
+
+	&.nan > .value-container > .single-value
+		color $jshownColorsNaN
+
+	&.null > .value-container > .single-value
+		color $jshownColorsNull
+
+	&.boolean > .value-container > .single-value
+		color $jshownColorsBoolean
+
+	&.function > .value-container > .single-value
+		color $jshownColorsFunction
+
+	&.regex > .value-container > .single-value
+		color $jshownColorsRegex
+
+	&.undefined > .value-container > .single-value
+		color $jshownColorsUndefined
+
+	&.date > .value-container > .single-value
+		color $jshownColorsDate
+
+	&.error > .value-container > .single-value
+		color $jshownColorsError
+
 
 	&.string > .value-container > .single-value
 		color $jshownColorsString
