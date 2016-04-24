@@ -12,8 +12,8 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var clean = require('gulp-clean');
 var stylus = require('gulp-stylus');
-var sourcemaps = require('gulp-sourcemaps');
 var nib = require('nib');
+var concat = require('gulp-concat');
 
 // CONFIGURATION
 var baseSourcePath = './src';
@@ -25,7 +25,8 @@ var paths = {
 			baseSourcePath + '/resources/**'
 		],
 		styles: [
-			baseSourcePath + '/stylesheets/**/*.styl'
+			baseSourcePath + '/stylesheets/**/*.styl',
+			baseSourcePath + '/scripts/**/*.styl'
 		],
 		javascript: [
 			'!' + baseSourcePath + '/scripts/libs/**',
@@ -76,6 +77,7 @@ gulp.task('build', function() {
 
 gulp.task('stylus', function () {
 	gulp.src(paths.src.styles)
+		.pipe(concat('bundle.styl'))
 		.pipe(sourcemaps.init())
 		.pipe(stylus({ use: [ nib() ] }))
 		.pipe(sourcemaps.write('.'))
