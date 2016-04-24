@@ -11,6 +11,9 @@ var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var clean = require('gulp-clean');
+var stylus = require('gulp-stylus');
+var sourcemaps = require('gulp-sourcemaps');
+var nib = require('nib');
 
 // CONFIGURATION
 var baseSourcePath = './src';
@@ -18,9 +21,11 @@ var paths = {
 	src: {
 		static: [
 			baseSourcePath + '/index.html',
-			baseSourcePath + '/stylesheets/**',
 			baseSourcePath + '/scripts/libs/**',
 			baseSourcePath + '/resources/**'
+		],
+		styles: [
+			baseSourcePath + '/stylesheets/**/*.styl'
 		],
 		javascript: [
 			'!' + baseSourcePath + '/scripts/libs/**',
@@ -69,6 +74,14 @@ gulp.task('build', function() {
 		.pipe(gulp.dest('./dest/scripts'));
 });
 
+gulp.task('stylus', function () {
+	gulp.src(paths.src.styles)
+		.pipe(sourcemaps.init())
+		.pipe(stylus({ use: [ nib() ] }))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(paths.targetFolder));
+});
+
 gulp.task('move-static', function() {
 	return gulp.src(paths.src.static, {
 			base: './src'
@@ -76,9 +89,10 @@ gulp.task('move-static', function() {
 		.pipe(gulp.dest(paths.targetFolder));
 });
 
-gulp.task('watch', ['move-static', 'build'], function() {
+gulp.task('watch', ['move-static', 'stylus', 'build'], function() {
+	gulp.watch(paths.src.styles, ['stylus']);
 	gulp.watch(paths.src.static, ['move-static']);
 	gulp.watch(paths.src.javascript, ['build']);
 });
 
-gulp.task('default', ['move-static', 'build']);
+gulp.task('default', ['move-static', 'stylus', 'build']);
