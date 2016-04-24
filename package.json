@@ -4,7 +4,7 @@
   "description": "",
   "author": "Lucas Vogel <contact@vogelino.com>",
   "scripts": {
-  	"start": "node app.js"
+    "start": "node app.js"
   },
   "main": "app.js",
   "repository": {
@@ -15,7 +15,8 @@
   "dependencies": {
     "express": "4.13.4",
     "react": "15.0.1",
-    "react-dom": "15.0.1"
+    "react-dom": "15.0.1",
+    "underscore": "^1.8.3"
   },
   "bugs": {
     "url": "https://github.com/vogelino/jshown/issues"
