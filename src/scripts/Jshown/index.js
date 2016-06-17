@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import _ from 'underscore';
 import Group from './Group.js';
 
@@ -16,28 +16,12 @@ export default class Jshown extends Component {
 	}
 
 
-	render() {
-		const { json } = this.state;
-		return (
-			<div>
-				{this.renderJson(json)}
-			</div>
-		);
-	}
-
-
-	formatJson(json) {
-		return Object.keys(json).map((key) =>
-			this.getFormattedValue(key, json[key]));
-	}
-
-
 	getFormattedValue(key, value, depth = 0) {
 		const formattedValue = {
 			name: key,
 			hasChildren: false,
 			childrenSize: 0,
-			value: value,
+			value,
 			depth: !_.isUndefined(depth) && _.isNumber(depth) &&
 				!_.isNaN(depth) ? depth + 1 : 0
 		};
@@ -94,12 +78,17 @@ export default class Jshown extends Component {
 			formattedValue.value = Object.keys(value).map((valueKey) =>
 				this.getFormattedValue(
 					valueKey, value[valueKey], formattedValue.depth));
-		}
-		else {
+		} else {
 			formattedValue.value += '';
 		}
 
 		return formattedValue;
+	}
+
+
+	formatJson(json) {
+		return Object.keys(json).map((key) =>
+			this.getFormattedValue(key, json[key]));
 	}
 
 
@@ -127,4 +116,18 @@ export default class Jshown extends Component {
 
 		return <span className="single-value">{value}</span>;
 	}
+
+
+	render() {
+		const { json } = this.state;
+		return (
+			<div>
+				{this.renderJson(json)}
+			</div>
+		);
+	}
 }
+
+Jshown.propTypes = {
+	json: PropTypes.object.isRequired
+};

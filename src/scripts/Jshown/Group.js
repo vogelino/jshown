@@ -1,4 +1,4 @@
-import React, { Component } from 'React';
+import React, { Component, PropTypes } from 'react';
 
 export default class Group extends Component {
 	constructor(props) {
@@ -10,32 +10,6 @@ export default class Group extends Component {
 		this.state = {
 			isOpen: false
 		};
-	}
-
-	render() {
-		const {
-			index, type, hasChildren,
-			childrenSize, depth,
-			children
-		} = this.props;
-		const { isOpen } = this.state;
-
-		const classes = [
-			'json-group',
-			isOpen ? 'open' : 'closed',
-			type.toLowerCase(),
-			`childrens-${childrenSize}`,
-			hasChildren ? 'with-children' : 'without-children'
-		].join(' ');
-
-		return (
-			<div key={index} id={`${depth}-${index}`} className={classes}>
-				{this.getLabel()}
-				<div className="value-container">
-					{children}
-				</div>
-			</div>
-		);
 	}
 
 	getLabel() {
@@ -68,4 +42,40 @@ export default class Group extends Component {
 	toggleGroupOpen() {
 		this.setState({ isOpen: !this.state.isOpen });
 	}
+
+	render() {
+		const {
+			index, type, hasChildren,
+			childrenSize, depth,
+			children
+		} = this.props;
+		const { isOpen } = this.state;
+
+		const classes = [
+			'json-group',
+			isOpen ? 'open' : 'closed',
+			type.toLowerCase(),
+			`childrens-${childrenSize}`,
+			hasChildren ? 'with-children' : 'without-children'
+		].join(' ');
+
+		return (
+			<div key={index} id={`${depth}-${index}`} className={classes}>
+				{this.getLabel()}
+				<div className="value-container">
+					{children}
+				</div>
+			</div>
+		);
+	}
 }
+
+Group.propTypes = {
+	hasChildren: PropTypes.bool,
+	name: PropTypes.string,
+	type: PropTypes.string,
+	childrenSize: PropTypes.number,
+	index: PropTypes.number,
+	depth: PropTypes.number,
+	children: PropTypes.element
+};

@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
-
-export default {
+const jsObject = {
 	typeString: 'I am a string',
 	typeInteger: 123,
 	typeNegativeInteger: -123,
@@ -22,3 +21,7 @@ export default {
 	typeDate: new Date(),
 	typeError: new Error('I am an Error')
 };
+
+jsObject.typeCircularReference = jsObject;
+
+export default jsObject;
